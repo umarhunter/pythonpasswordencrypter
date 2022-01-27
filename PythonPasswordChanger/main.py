@@ -4,12 +4,19 @@ import random
 def convert2ascii(string):
     return " ".join(str(ord(char)) for char in string)
 
+def convert2string(number):
+    return chr(number)
+
 def createsmall():
     print("DEBUG: createsmall function launched")
     foo = input("Please enter the password you want to encrypt: ")
     newfoo = convert2ascii(foo)
     print("DEBUG: convert2ascii returned: ", newfoo)
-
+    splitfoo = newfoo.split(" ")
+    int_list = [int(x) for x in splitfoo]
+    print(int_list)
+    for i in range(len(int_list)):
+        listvar = convert2string(int_list[i])
 def createmedium():
     print("DEBUG: createmedium function launched")
     foo = input("Please enter the password you want to encrypt: ")
