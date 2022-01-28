@@ -19,13 +19,13 @@ def randomizer(param):
 
 
 def createsmall():
-    #print("DEBUG: createsmall function launched")
+    # print("DEBUG: createsmall function launched")
     foo = input("Please enter the password you want to encrypt: ")
     newfoo = convert2ascii(foo, randomizer(1))
-    #print("DEBUG: convert2ascii returned: ", newfoo)
+    # print("DEBUG: convert2ascii returned: ", newfoo)
     splitfoo = newfoo.split(" ")
     integer_list = [int(x) for x in splitfoo]
-    #print("DEBUG: int_list: ", integer_list)
+    # print("DEBUG: int_list: ", integer_list)
     appendvar = []
     for i in range(len(integer_list)):
         appendvar.append(str(convert2string(integer_list[i])))
