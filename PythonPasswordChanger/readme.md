@@ -4,7 +4,7 @@ A more simple example: you want to use password "lily", can't, so you use this p
 
 
 CURRENT BUGS/LIMITATIONS: 
-- using multiple ZZZ's may result in error or a "strange" character as your password. This will be addressed in the future and is most likely caused by the randomizer function adding too much to the original ord value.
+- using multiple ZZZZ's may result in error or a "strange" character as your password. This will be addressed in the future and is most likely caused by the randomizer function adding too much to the original ord value.
 - unique algorithms are not yet implemented, only pre-determined formulas
 
 
