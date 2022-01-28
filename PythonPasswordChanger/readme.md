@@ -20,7 +20,8 @@ Supports:
 - storing password in text file
 - saves the key to text file
 
-Former Build Versions: 
+Former Build Versions:
+
 Version 1: 
 - allowed user input 
 - contained necessary functions for future implementation seen in version 2
