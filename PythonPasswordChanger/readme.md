@@ -8,7 +8,8 @@ CURRENT BUGS/LIMITATIONS:
 - unique algorithms are not yet implemented, only pre-determined formulas
 
 
-Current Stable Version: 2
+CURRENT STABLE VERSION: 2
+
 Supports: 
 - pre-determined formulas
 - optional debug statements if necessary
@@ -17,14 +18,14 @@ Supports:
 - prints out new password to console
 
 
-Upcoming Build Version: 3
+UPCOMING BUILD VERSION: 3
 
 Supports: 
 - storing password in text file
 - saves the key to text file
 
 
-Former Build Versions:
+FORMER VERSIONS:
 
 Version 1: 
 - allowed user input 
