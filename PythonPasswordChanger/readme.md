@@ -2,6 +2,11 @@ Objective: Create a Python program that changes your password into a more diffic
 
 A more simple example: you want to use password "lily", can't, so you use this program that gives you a new password to use instead. You are expected to memorize this new password but in case you forget, all you need to do is put your easy password ("lily") and the key you used, which will output the password you forgot. 
 
+CURRENT BUGS/LIMITATIONS: 
+- using multiple ZZZ's may result in error or a "strange" character as your password. This will be addressed in the future and is most likely caused by the randomizer function adding too much to the original ord value.
+- unique algorithms are not yet implemented, only pre-determined formulas
+
+
 Current Stable Version: 2
 Supports: 
 - pre-determined formulas
