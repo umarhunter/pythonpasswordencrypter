@@ -82,7 +82,7 @@ def passwordfunction():
 
 if __name__ == '__main__':
     username = getpass.getuser()
-    print("Python Password Manager V2")
+    print("Python Password Manager V3")
     print("..........................")
     print("WARNING: AS OF NOW, ONLY PRE-DETERMINED FORMULAS ARE WORKING")
     #info = open('information.txt', 'w+') // keeping in case of future implementation with file systems

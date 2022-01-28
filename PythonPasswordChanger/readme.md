@@ -8,21 +8,17 @@ CURRENT BUGS/LIMITATIONS:
 - unique algorithms are not yet implemented, only pre-determined formulas
 
 
-CURRENT STABLE VERSION: 2
-
-Supports: 
-- pre-determined formulas
-- optional debug statements if necessary
-- randomized number of transformation depending on formula
-- checks if inputs are correct
-- prints out new password to console
-
-
-UPCOMING BUILD VERSION: 3
-
+CURRENT STABLE VERSION: 3
 Supports: 
 - storing password in text file
 - saves the key to text file
+- fixed ZZZ error
+
+
+UPCOMING BUILD VERSION: 4
+
+Supports: 
+- fully implement user formula functionality
 
 
 FORMER VERSIONS:
@@ -30,3 +26,10 @@ FORMER VERSIONS:
 Version 1: 
 - allowed user input 
 - contained necessary functions for future implementation seen in version 2
+
+Version 2:
+- pre-determined formulas
+- optional debug statements if necessary
+- randomized number of transformation depending on formula
+- checks if inputs are correct
+- prints out new password to console
