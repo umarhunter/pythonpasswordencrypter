@@ -5,7 +5,7 @@ A more simple example: you want to use password "lily", can't, so you use this p
 
 CURRENT BUGS/LIMITATIONS: 
 - using multiple ZZZZ's may result in error or a "strange" character as your password. This will be addressed in the future and is most likely caused by the randomizer function adding too much to the original ord value.
-- unique algorithms are not yet implemented, only pre-determined formulas
+- unique algorithms are not yet implemented, only pre-determined formulas, sorry :(
 
 
 CURRENT STABLE VERSION: 3
@@ -21,7 +21,9 @@ UPCOMING BUILD VERSION: 4
 Supports: 
 - fully implement user formula functionality
 - fixed ZZZ error
-
+- rename variables for public release
+- remove debug comments
+- open password txt file via path
 
 
 FORMER VERSIONS:
