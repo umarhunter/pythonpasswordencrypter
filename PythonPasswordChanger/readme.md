@@ -9,16 +9,19 @@ CURRENT BUGS/LIMITATIONS:
 
 
 CURRENT STABLE VERSION: 3
+
 Supports: 
 - storing password in text file
 - saves the key to text file
-- fixed ZZZ error
+- retrieves encrypted password
 
 
 UPCOMING BUILD VERSION: 4
 
 Supports: 
 - fully implement user formula functionality
+- fixed ZZZ error
+
 
 
 FORMER VERSIONS:
