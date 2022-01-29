@@ -22,11 +22,18 @@ def randomizer(param):
         return random.randint(9, 18)
 
 
+def add2file(passw, rand):
+    file = open("information.txt", "a")
+    thetime = time.asctime(time.localtime(time.time()))
+    file.write("Password: " + passw + "\nTimestamp: " + thetime + "\nAlgorithm: " + str(rand))
+    file.close()
+
+
 def createsmall():
     # print("DEBUG: createsmall function launched")
     foo = input("Please enter the password you want to encrypt: ")
     randomreturn = randomizer(1)
-    print("DEBUG: randomreturn: ", randomreturn)
+    # print("DEBUG: randomreturn: ", randomreturn)
     newfoo = convert2ascii(foo, randomreturn)
     # print("DEBUG: convert2ascii returned: ", newfoo)
     splitfoo = newfoo.split(" ")
@@ -37,16 +44,15 @@ def createsmall():
         appendvar.append(str(convert2string(integer_list[i])))
     var = "".join(appendvar)
     print("Your new password is: ", var)
-    file = open("information.txt", "a")
-    thetime = time.asctime(time.localtime(time.time()))
-    file.write("Password: " + var + "\nTimestamp: " + thetime)
-    file.close()
+    add2file(var, randomreturn)
 
 
 def createmedium():
     # print("DEBUG: createsmall function launched")
     foo = input("Please enter the password you want to encrypt: ")
-    newfoo = convert2ascii(foo, randomizer(2))
+    randomreturn = randomizer(2)
+    # print("DEBUG: randomreturn: ", randomreturn)
+    newfoo = convert2ascii(foo, randomreturn)
     # print("DEBUG: convert2ascii returned: ", newfoo)
     splitfoo = newfoo.split(" ")
     integer_list = [int(x) for x in splitfoo]
@@ -56,16 +62,15 @@ def createmedium():
         appendvar.append(str(convert2string(integer_list[i])))
     var = "".join(appendvar)
     print("Your new password is: ", var)
-    file = open("information.txt", "a")
-    thetime = time.asctime(time.localtime(time.time()))
-    file.write("Password: " + var + "\nTimestamp: " + thetime)
-    file.close()
+    add2file(var, randomreturn)
 
 
 def createlarge():
     # print("DEBUG: createsmall function launched")
     foo = input("Please enter the password you want to encrypt: ")
-    newfoo = convert2ascii(foo, randomizer(3))
+    randomreturn = randomizer(3)
+    # print("DEBUG: randomreturn: ", randomreturn)
+    newfoo = convert2ascii(foo, randomreturn)
     # print("DEBUG: convert2ascii returned: ", newfoo)
     splitfoo = newfoo.split(" ")
     integer_list = [int(x) for x in splitfoo]
@@ -75,10 +80,7 @@ def createlarge():
         appendvar.append(str(convert2string(integer_list[i])))
     var = "".join(appendvar)
     print("Your new password is: ", var)
-    file = open("information.txt", "a")
-    thetime = time.asctime(time.localtime(time.time()))
-    file.write("Password: " + var + "\nTimestamp: " + thetime)
-    file.close()
+    add2file(var, randomreturn)
 
 
 def createformulas():
@@ -104,12 +106,22 @@ def passwordfunction():
     useralgorithm = input("Please enter the password you want to encrypt: ")
 
 
+def findthatkey(string,num):
+    newfoo = convert2ascii(string, num)
+    splitfoo = newfoo.split(" ")
+    integer_list = [int(x) for x in splitfoo]
+    appendvar = []
+    for i in range(len(integer_list)):
+        appendvar.append(str(convert2string(integer_list[i])))
+    var = "".join(appendvar)
+    return var
+
 def findkey():
     print("Welcome to the Password Recovery Program!")
-    print("Please note: You must know your original password in order to get the encrypted one. Otherwise, "
+    print("Please note: You must know your original password and formula in order to get the encrypted one. Otherwise, "
           "there is no way of getting it.")
     whilevar = 1
-    while (whilevar > 0):
+    while whilevar > 0:
         choice = input("Do you have your original password? y/n: ")
         if choice == "n":
             whilevar = -1
@@ -124,6 +136,28 @@ def findkey():
             whilevar = -1
         else:
             print("Invalid input. Please try again.")
+    original = input("Please enter your original password: ")
+    formula = int(input("Please enter your formula #: "))
+    encrypt = findthatkey(original, formula)
+    print("Your encrypted password was: ", encrypt)
+    save = input("Would you like to save this password into text file? y/n: ")
+    if save == "y":
+        add2file(encrypt, formula)
+    else:
+        print("Have a nice day!")
+
+def createpassword():
+    increment = 1
+    while increment > 0:
+        formulas = input("Will you require pre-determined formulas? y/n:")
+        if formulas == "y":
+            increment = -1
+            createformulas()
+        elif formulas == "n":
+            increment = -1
+            passwordfunction()
+        else:
+            print("Please enter a valid input: (y/n)")
 
 
 if __name__ == '__main__':
@@ -142,16 +176,8 @@ if __name__ == '__main__':
         if firstchoice == "2":
             firstincrement = -1
             findkey()
-        else:
+        elif firstchoice == "1":
             firstincrement = -1
-            increment = 1
-            while increment > 0:
-                formulas = input("Will you require pre-determined formulas? y/n:")
-                if formulas == "y":
-                    increment = -1
-                    createformulas()
-                elif formulas == "n":
-                    increment = -1
-                    passwordfunction()
-                else:
-                    print("Please enter a valid input: (y/n)")
+            createpassword()
+        else:
+            print("Invalid input, please try again!")
