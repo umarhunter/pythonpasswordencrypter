@@ -27,60 +27,70 @@ def add2file(passw, rand):
     thetime = time.asctime(time.localtime(time.time()))
     file.write("Password: " + passw + "\nTimestamp: " + thetime + "\nAlgorithm: " + str(rand))
     file.close()
+    print("Successfully saved content to file\n")
+    whilevar = 1
+    while whilevar > 0:
+        openfile = input("Would you like to open the file now? y/n:")
+        if openfile == "y":
+            whilevar = -1
+            secondwhilevar = 1
+            while secondwhilevar > 0:
+                texteditor = input("How would you prefer reading the file?\n1) Here in the Python terminal\n2) Default text editor\nPlease enter 1 or 2: ")
+                if texteditor == "1":
+                    secondwhilevar = -1
+                    tfile = open("information.txt", "r")
+                    print(tfile.read())
+                elif texteditor == "2":
+                    secondwhilevar = -1
+                    webbrowser.open("information.txt")
+                else:
+                    print("Invalid input. Please try again.")
+        elif openfile == "n":
+            whilevar = -1
+            print("Have a nice day!")
+        else:
+            print("Invalid input. Please try again.")
+
+
+
+def process(random):
+    # print("DEBUG: createsmall function launched")
+    userinput = input("Please enter the password you want to encrypt: ")
+    randomreturn = randomizer(random)
+    # print("DEBUG: randomreturn: ", randomreturn)
+    newinput = convert2ascii(userinput, randomreturn)
+    # print("DEBUG: convert2ascii returned: ", newinput)
+    splitinput = newinput.split(" ")
+    integer_list = [int(x) for x in splitinput]
+    # print("DEBUG: int_list: ", integer_list)
+    appendvar = []
+    for i in range(len(integer_list)):
+        appendvar.append(str(convert2string(integer_list[i])))
+    var = "".join(appendvar)
+    print("Your new password is: ", var)
+    whilevar = 1
+    while whilevar > 0:
+        savefile = input("Would you like to save this password to a text file? y/n: ")
+        if savefile == "y":
+            whilevar = -1
+            add2file(var, randomreturn)
+        elif savefile == "n":
+            whilevar = -1
+            print("Thank you for using this program!")
+        else:
+            print("Invalid input. Please try again.")
 
 
 def createsmall():
-    # print("DEBUG: createsmall function launched")
-    foo = input("Please enter the password you want to encrypt: ")
-    randomreturn = randomizer(1)
-    # print("DEBUG: randomreturn: ", randomreturn)
-    newfoo = convert2ascii(foo, randomreturn)
-    # print("DEBUG: convert2ascii returned: ", newfoo)
-    splitfoo = newfoo.split(" ")
-    integer_list = [int(x) for x in splitfoo]
-    # print("DEBUG: int_list: ", integer_list)
-    appendvar = []
-    for i in range(len(integer_list)):
-        appendvar.append(str(convert2string(integer_list[i])))
-    var = "".join(appendvar)
-    print("Your new password is: ", var)
-    add2file(var, randomreturn)
+    process(1)
 
 
 def createmedium():
-    # print("DEBUG: createsmall function launched")
-    foo = input("Please enter the password you want to encrypt: ")
-    randomreturn = randomizer(2)
-    # print("DEBUG: randomreturn: ", randomreturn)
-    newfoo = convert2ascii(foo, randomreturn)
-    # print("DEBUG: convert2ascii returned: ", newfoo)
-    splitfoo = newfoo.split(" ")
-    integer_list = [int(x) for x in splitfoo]
-    # print("DEBUG: int_list: ", integer_list)
-    appendvar = []
-    for i in range(len(integer_list)):
-        appendvar.append(str(convert2string(integer_list[i])))
-    var = "".join(appendvar)
-    print("Your new password is: ", var)
-    add2file(var, randomreturn)
+    process(2)
 
 
 def createlarge():
-    # print("DEBUG: createsmall function launched")
-    foo = input("Please enter the password you want to encrypt: ")
-    randomreturn = randomizer(3)
-    # print("DEBUG: randomreturn: ", randomreturn)
-    newfoo = convert2ascii(foo, randomreturn)
-    # print("DEBUG: convert2ascii returned: ", newfoo)
-    splitfoo = newfoo.split(" ")
-    integer_list = [int(x) for x in splitfoo]
-    # print("DEBUG: int_list: ", integer_list)
-    appendvar = []
-    for i in range(len(integer_list)):
-        appendvar.append(str(convert2string(integer_list[i])))
-    var = "".join(appendvar)
-    print("Your new password is: ", var)
-    add2file(var, randomreturn)
+    process(3)
 
 
 def createformulas():
@@ -99,22 +109,26 @@ def createformulas():
             incrementvar = -1
             createlarge()
         else:
-            print("Invalid input, please try again!")
+            print("Invalid input. Please try again.")
 
 
 def passwordfunction():
     useralgorithm = input("Please enter the password you want to encrypt: ")
+    ord = input(int("Select ord value: "))
+    convert2ascii(useralgorithm, ord)
 
 
-def findthatkey(string,num):
-    newfoo = convert2ascii(string, num)
-    splitfoo = newfoo.split(" ")
-    integer_list = [int(x) for x in splitfoo]
+
+def findthatkey(string, num):
+    newinput = convert2ascii(string, num)
+    splitinput = newinput.split(" ")
+    integer_list = [int(x) for x in splitinput]
     appendvar = []
     for i in range(len(integer_list)):
         appendvar.append(str(convert2string(integer_list[i])))
     var = "".join(appendvar)
     return var
+
 
 def findkey():
     print("Welcome to the Password Recovery Program!")
@@ -126,7 +140,7 @@ def findkey():
         if choice == "n":
             whilevar = -1
             tips = input("Sorry you couldn't remember your original password. Would you like some tips on remembering "
-                         "passwords? y/n: ")
+                         "passwords?\nWarning: Link will open in browser if accepted\ny/n: ")
             if tips == "y":
                 webbrowser.open("https://www.wikihow.com/Remember-a-Forgotten-Password")
             else:
@@ -140,11 +154,12 @@ def findkey():
     formula = int(input("Please enter your formula #: "))
     encrypt = findthatkey(original, formula)
     print("Your encrypted password was: ", encrypt)
-    save = input("Would you like to save this password into text file? y/n: ")
+    save = input("Would you like to save this password into a text file? y/n: ")
     if save == "y":
         add2file(encrypt, formula)
     else:
         print("Have a nice day!")
+
 
 def createpassword():
     increment = 1
@@ -162,7 +177,7 @@ def createpassword():
 
 if __name__ == '__main__':
     username = getpass.getuser()
-    print("Python Password Manager V3")
+    print("Python Password Manager V4")
     print("..........................")
     print("WARNING: AS OF NOW, ONLY PRE-DETERMINED FORMULAS ARE WORKING")
     print("..........................\n")
