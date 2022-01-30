@@ -4,18 +4,16 @@ import sys
 import time
 import webbrowser
 
+
 def convert2ascii(string, num):
-    useme = ""
+    blank = ""
     for index in range(len(string)):
-        if (ord(string[index]) + 13 > 122):
-            newvar = ord(string[index]) - 26
-            newnew = newvar + num
-            useme = useme + chr(newnew)
-        else:
-            bar = ord(string[index]) + num
-            chrvar = chr(bar)
-            useme = useme + chrvar
-    return useme
+        whilevar = ord(string[index]) + num
+        while whilevar > 122:
+            whilevar = whilevar - 26
+        bar = whilevar
+        blank = blank + chr(bar)
+    return blank
 
 
 def convert2string(number):
@@ -46,7 +44,8 @@ def add2file(passw, rand):
             secondwhilevar = 1
             while secondwhilevar > 0:
                 texteditor = input(
-                    "How would you prefer reading the file?\n1) Here in the Python terminal\n2) Default text editor\nPlease enter 1 or 2: ")
+                    "How would you prefer reading the file?\n1) Here in the Python terminal\n2) Default text "
+                    "editor\nPlease enter 1 or 2: ")
                 if texteditor == "1":
                     secondwhilevar = -1
                     tfile = open("information.txt", "r")
@@ -63,10 +62,19 @@ def add2file(passw, rand):
             print("Invalid input. Please try again.")
 
 
-def process(random):
-    # print("DEBUG: createsmall function launched")
-    userinput = input("Please enter the password you want to encrypt: ")
-    randomreturn = randomizer(random)
+def process(randomvar):
+    truee = 1
+    while truee == 1:
+        userinput = input("Please enter the password you want to encrypt: ")
+        print("You have entered: ", userinput)
+        verify = input("Is this correct? y/n: ")
+        if verify == "y":
+            truee = 0
+        elif verify == "n":
+            print("\n")
+        else:
+            print("Invalid input. Please try again.")
+    randomreturn = randomizer(randomvar)
     # print("DEBUG: randomreturn: ", randomreturn)
     newinput = convert2ascii(userinput, randomreturn)
 
@@ -101,14 +109,14 @@ def createformulas():
     incrementvar = 1
     while incrementvar > 0:
         print("Please enter encryption length (1,2,3) ")
-        userInput = input("1. Small\n2. Medium\n3. Large\nEnter here: ")
-        if userInput == "1":
+        userinput = input("1. Small\n2. Medium\n3. Large\nEnter here: ")
+        if userinput == "1":
             incrementvar = -1
             createsmall()
-        elif userInput == "2":
+        elif userinput == "2":
             incrementvar = -1
             createmedium()
-        elif userInput == "3":
+        elif userinput == "3":
             incrementvar = -1
             createlarge()
         else:
@@ -116,16 +124,26 @@ def createformulas():
 
 
 def passwordfunction():
-    useralgorithm = input("Please enter the password you want to encrypt: ")
-    ord = int(input("Select ord value: "))
-    newinput = convert2ascii(useralgorithm, ord)
+    truee = 1
+    while truee == 1:
+        useralgorithm = input("Please enter the password you want to encrypt: ")
+        print("You have entered: ", useralgorithm)
+        verify = input("Is this correct? y/n: ")
+        if verify == "y":
+            truee = 0
+        elif verify == "n":
+            print("\n")
+        else:
+            print("Invalid input. Please try again.")
+    ordvar = int(input("Select ord value: "))
+    newinput = convert2ascii(useralgorithm, ordvar)
     print("Your new password is: ", newinput)
     whilevar = 1
     while whilevar > 0:
         savefile = input("Would you like to save this password to a text file? y/n: ")
         if savefile == "y":
             whilevar = -1
-            add2file(newinput, ord)
+            add2file(newinput, ordvar)
         elif savefile == "n":
             whilevar = -1
             print("Thank you for using this program!")
@@ -185,7 +203,7 @@ def createpassword():
 
 if __name__ == '__main__':
     username = getpass.getuser()
-    print("Python Password Manager V4")
+    print("Python Password Manager V5")
     print("..........................")
     print("   MADE BY: UMAR FARUQUE  ")
     print("..........................\n")

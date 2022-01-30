@@ -1,30 +1,23 @@
-Objective: Create a Python program that changes your password into a more difficult one while giving you the formula you'll need to figure out what it is. For example, say you want to use a simple password like "lily" but you're afraid someone may be able to access it. For cases like this, this program will allow users to use simple passwords, so that all they need is to put their original password and the key so that they could find their new password. 
+Here is a link to the Replit: [Click here](https://replit.com/@umarhunter/pythonpasswordencrypter?v=1)
 
-A more simple example: you want to use password "lily", can't, so you use this program that gives you a new password to use instead. You are expected to memorize this new password but in case you forget, all you need to do is put your easy password ("lily") and the key you used, which will output the password you forgot. 
+![Image 1](img/img1.png)     
+![Image 2](img/img2.png)   
+![Image 3](img/img3.png)   
 
-
-CURRENT BUGS/LIMITATIONS: 
-- using multiple "unorthodox" characters may result in UB
-- full lower/uppercase not yet integrated
-
-
-CURRENT STABLE VERSION: 4
-
-Supports: 
-- fully implemented user formula functionality
-- fixed ZZZ error
-- rename variables for public release
-- open password txt file via path
+Objective: Create a Python program that allows users to encrypt their own passwords. The program also features a Password Recovery function and pre-set values to select. The program also saves sensitive information on a text file and allows accessibility to said file.
 
 
-UPCOMING BUILD VERSION: 5
+**CURRENT STABLE VERSION: 5**
 
 Supports: 
 - add confirmation for password inputs
 - simplify code as much as possible for public release
 
 
-FORMER VERSIONS:
+**UPCOMING BUILD VERSION: none**
+
+
+**FORMER VERSIONS:**
 
 Version 1: 
 - allowed user input 
@@ -41,3 +34,9 @@ Version 3:
 - storing password in text file
 - saves the key to text file
 - retrieves encrypted password
+
+Version 4:
+- fully implemented user formula functionality
+- fixed ZZZ error
+- rename variables for public release
+- open password txt file via path
