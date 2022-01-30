@@ -15,7 +15,7 @@ def convert2ascii(string, num):
             bar = ord(string[index]) + num
             chrvar = chr(bar)
             useme = useme + chrvar
-    print(useme)
+    return useme
 
 
 def convert2string(number):
@@ -134,14 +134,8 @@ def passwordfunction():
 
 
 def findthatkey(string, num):
-    newinput = convert2ascii(string, num)
-    splitinput = newinput.split(" ")
-    integer_list = [int(x) for x in splitinput]
-    appendvar = []
-    for i in range(len(integer_list)):
-        appendvar.append(str(convert2string(integer_list[i])))
-    var = "".join(appendvar)
-    return var
+    integer_list = convert2ascii(string, num)
+    return integer_list
 
 
 def findkey():
