@@ -8,22 +8,20 @@ CURRENT BUGS/LIMITATIONS:
 - unique algorithms are not yet implemented, only pre-determined formulas, sorry :(
 
 
-CURRENT STABLE VERSION: 3
-
-Supports: 
-- storing password in text file
-- saves the key to text file
-- retrieves encrypted password
-
-
-UPCOMING BUILD VERSION: 4
+CURRENT STABLE VERSION: 4
 
 Supports: 
 - fully implement user formula functionality
 - fixed ZZZ error
 - rename variables for public release
-- remove debug comments
 - open password txt file via path
+
+
+UPCOMING BUILD VERSION: 5
+
+Supports: 
+- add confirmation for password inputs
+- simplify code as much as possible for public release
 
 
 FORMER VERSIONS:
@@ -38,3 +36,8 @@ Version 2:
 - randomized number of transformation depending on formula
 - checks if inputs are correct
 - prints out new password to console
+
+Version 3:
+- storing password in text file
+- saves the key to text file
+- retrieves encrypted password

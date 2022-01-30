@@ -4,9 +4,18 @@ import sys
 import time
 import webbrowser
 
-
 def convert2ascii(string, num):
-    return " ".join(str(ord(char) + num) for char in string)
+    useme = ""
+    for index in range(len(string)):
+        if (ord(string[index]) + 13 > 122):
+            newvar = ord(string[index]) - 26
+            newnew = newvar + num
+            useme = useme + chr(newnew)
+        else:
+            bar = ord(string[index]) + num
+            chrvar = chr(bar)
+            useme = useme + chrvar
+    print(useme)
 
 
 def convert2string(number):
@@ -25,7 +34,8 @@ def randomizer(param):
 def add2file(passw, rand):
     file = open("information.txt", "a")
     thetime = time.asctime(time.localtime(time.time()))
-    file.write("Password: " + passw + "\nTimestamp: " + thetime + "\nAlgorithm: " + str(rand))
+    file.write(
+        "User: " + getpass.getuser() + "\nPassword: " + passw + "\nTimestamp: " + thetime + "\nAlgorithm: " + str(rand))
     file.close()
     print("Successfully saved content to file\n")
     whilevar = 1
@@ -35,7 +45,8 @@ def add2file(passw, rand):
             whilevar = -1
             secondwhilevar = 1
             while secondwhilevar > 0:
-                texteditor = input("How would you prefer reading the file?\n1) Here in the Python terminal\n2) Default text editor\nPlease enter 1 or 2: ")
+                texteditor = input(
+                    "How would you prefer reading the file?\n1) Here in the Python terminal\n2) Default text editor\nPlease enter 1 or 2: ")
                 if texteditor == "1":
                     secondwhilevar = -1
                     tfile = open("information.txt", "r")
@@ -52,28 +63,20 @@ def add2file(passw, rand):
             print("Invalid input. Please try again.")
 
 
-
 def process(random):
     # print("DEBUG: createsmall function launched")
     userinput = input("Please enter the password you want to encrypt: ")
     randomreturn = randomizer(random)
     # print("DEBUG: randomreturn: ", randomreturn)
     newinput = convert2ascii(userinput, randomreturn)
-    # print("DEBUG: convert2ascii returned: ", newinput)
-    splitinput = newinput.split(" ")
-    integer_list = [int(x) for x in splitinput]
-    # print("DEBUG: int_list: ", integer_list)
-    appendvar = []
-    for i in range(len(integer_list)):
-        appendvar.append(str(convert2string(integer_list[i])))
-    var = "".join(appendvar)
-    print("Your new password is: ", var)
+
+    print("Your new password is: ", newinput)
     whilevar = 1
     while whilevar > 0:
         savefile = input("Would you like to save this password to a text file? y/n: ")
         if savefile == "y":
             whilevar = -1
-            add2file(var, randomreturn)
+            add2file(newinput, randomreturn)
         elif savefile == "n":
             whilevar = -1
             print("Thank you for using this program!")
@@ -114,9 +117,20 @@ def createformulas():
 
 def passwordfunction():
     useralgorithm = input("Please enter the password you want to encrypt: ")
-    ord = input(int("Select ord value: "))
-    convert2ascii(useralgorithm, ord)
-
+    ord = int(input("Select ord value: "))
+    newinput = convert2ascii(useralgorithm, ord)
+    print("Your new password is: ", newinput)
+    whilevar = 1
+    while whilevar > 0:
+        savefile = input("Would you like to save this password to a text file? y/n: ")
+        if savefile == "y":
+            whilevar = -1
+            add2file(newinput, ord)
+        elif savefile == "n":
+            whilevar = -1
+            print("Thank you for using this program!")
+        else:
+            print("Invalid input. Please try again.")
 
 
 def findthatkey(string, num):
@@ -179,7 +193,7 @@ if __name__ == '__main__':
     username = getpass.getuser()
     print("Python Password Manager V4")
     print("..........................")
-    print("WARNING: AS OF NOW, ONLY PRE-DETERMINED FORMULAS ARE WORKING")
+    print("   MADE BY: UMAR FARUQUE  ")
     print("..........................\n")
     info = open('information.txt', 'w+')
 
